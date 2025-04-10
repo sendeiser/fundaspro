@@ -2,6 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
+require('dotenv').config();
+
 // Importar fetch compatible con Node.js
 let fetch;
 try {
@@ -14,7 +16,7 @@ const app = express();
 const PORT = 3000;
 
 // Reemplaza con tu clave API de OpenAI
-const OPENAI_API_KEY = 'REMOVED_OPENAI_KEY';
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -29,7 +31,7 @@ Pregunta: ${message}`;
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer REMOVED_HF_TOKEN'
+        'Authorization': `Bearer ${process.env.HUGGINGFACE_TOKEN}`
       },
       body: JSON.stringify({
         inputs: prompt
