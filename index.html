@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundas Personalizadas Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css"> <!-- Enlace al archivo CSS externo -->
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <script>
+        // Configuración inicial para modo oscuro/claro con CSS Variables
+        // Aplica la clase 'dark-mode' al body basado en localStorage ('theme') o preferencia del sistema
+        (function() {
+            // Asegurarse de que el body existe antes de intentar añadirle clases
+            const applyTheme = () => {
+                const savedTheme = localStorage.getItem('theme');
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                if (document.body) { // Comprobar si body está disponible
+                    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                        document.body.classList.add('dark-mode');
+                    } else {
+                        document.body.classList.remove('dark-mode');
+                    }
+                }
+            };
+            // Intentar aplicar inmediatamente
+            applyTheme();
+            // Asegurar que se aplique después de que el DOM esté listo si body no estaba disponible
+            document.addEventListener('DOMContentLoaded', applyTheme);
+        })();
+    </script>
+</head>
+<body class="font-sans"> <!-- Clases dark: eliminadas, gestionadas por style.css -->
+
+    <!-- Navbar -->
+    <header class="shadow-md sticky top-0 z-50"> <!-- Clases dark: eliminadas -->
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" class="h-10 mr-2" role="img" aria-label="Logo FundasPro" tabindex="0">
+                    <rect x="5" y="5" width="40" height="40" rx="8" ry="8" fill="#4F46E5"/>
+                    <rect x="15" y="10" width="20" height="30" rx="4" ry="4" fill="#FFFFFF"/>
+                    <text x="55" y="32" font-family="sans-serif" font-size="20" fill="#4F46E5" font-weight="bold">FundasPro</text>
+                </svg>
+               
+            </a>
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="#inicio" class="px-3 py-2 rounded-md text-sm font-medium">Inicio</a> <!-- Clases dark: eliminadas -->
+                <a href="#productos" class="px-3 py-2 rounded-md text-sm font-medium">Productos</a> <!-- Clases dark: eliminadas -->
+                <a href="#personalizar" class="px-3 py-2 rounded-md text-sm font-medium">Personalizar</a> <!-- Clases dark: eliminadas -->
+                <a href="#contacto" class="px-3 py-2 rounded-md text-sm font-medium">Contacto</a> <!-- Clases dark: eliminadas -->
+                <button id="theme-toggle" type="button" class="focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-2.5"> <!-- Clases dark: eliminadas -->
+                    <svg id="theme-toggle-dark-icon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                    <svg id="theme-toggle-light-icon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 5.05a1 1 0 00-1.414 1.414l.707.707a1 1 0 001.414-1.414l-.707-.707zM3 11a1 1 0 100 2h1a1 1 0 100-2H3zm10.95.464a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                </button>
+            </div>
+            <!-- Mobile menu button -->
+            <div class="md:hidden flex items-center">
+                 <button id="theme-toggle-mobile" type="button" class="focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-2.5 mr-2"> <!-- Clases dark: eliminadas -->
+                    <svg id="theme-toggle-dark-icon-mobile" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                    <svg id="theme-toggle-light-icon-mobile" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 5.05a1 1 0 00-1.414 1.414l.707.707a1 1 0 001.414-1.414l-.707-.707zM3 11a1 1 0 100 2h1a1 1 0 100-2H3zm10.95.464a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                </button>
+                <button id="mobile-menu-button" class="outline-none mobile-menu-button">
+                    <svg class=" w-6 h-6 text-gray-500 hover:text-gray-800 " <!-- Clases dark: eliminadas -->
+                        x-show="!showMenu"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                        <path d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div class="hidden mobile-menu md:hidden">
+            <ul class="">
+                <li><a href="#inicio" class="block text-sm px-2 py-4">Inicio</a></li> <!-- Clases dark: eliminadas -->
+                <li><a href="#productos" class="block text-sm px-2 py-4">Productos</a></li> <!-- Clases dark: eliminadas -->
+                <li><a href="#personalizar" class="block text-sm px-2 py-4">Personalizar</a></li> <!-- Clases dark: eliminadas -->
+                <li><a href="#contacto" class="block text-sm px-2 py-4">Contacto</a></li> <!-- Clases dark: eliminadas -->
+            </ul>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-8">
+        <!-- Aquí irán las secciones: Hero, Features, Personalizar, Contacto -->
+        <section id="inicio" class="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75" style="min-height: 75vh;">
+            <div class="absolute top-0 w-full h-full bg-center bg-cover" style="background-image: url('https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1780&q=80');"> <!-- Nueva imagen de fondo para Hero -->
+                <span id="blackOverlay" class="w-full h-full absolute bg-black"></span> <!-- Clases dark: eliminadas, opacidad en CSS -->
+            </div>
+            <div class="container relative mx-auto">
+                <div class="items-center flex flex-wrap">
+                    <div class="w-full lg:w-8/12 px-4 ml-auto mr-auto text-center">
+                        <div class="pr-0 lg:pr-12">
+                            <h1 class="text-white font-semibold text-4xl md:text-5xl">
+                                Diseña la funda perfecta para tu móvil.
+                            </h1>
+                            <p class="mt-4 text-lg"> <!-- Clases dark: eliminadas -->
+                                Expresa tu estilo único con nuestras fundas personalizadas. Alta calidad, diseños ilimitados y envío rápido. ¡Tu móvil, tus reglas!
+                            </p>
+                            <a href="#personalizar" class="mt-8 inline-block bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold uppercase text-sm px-8 py-3 rounded-full shadow-lg hover:shadow-xl outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 transform hover:scale-105">
+                                ¡Empieza a Crear Ahora!
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden" style="height: 70px; transform: translateZ(0px);">
+                <svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" y="0">
+                    <polygon class="fill-current" points="2560 0 2560 100 0 100"></polygon> <!-- Clases dark: eliminadas -->
+                </svg>
+            </div>
+        </section>
+        <section id="productos" class="py-16"> <!-- Clases dark: eliminadas -->
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Explora Nuestros Diseños</h2> <!-- Clases dark: eliminadas -->
+                    <p class="text-lg max-w-2xl mx-auto"> <!-- Clases dark: eliminadas -->
+                        Desde diseños minimalistas hasta creaciones artísticas, tenemos la funda perfecta para ti. O mejor aún, ¡crea la tuya!
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Producto 1 -->
+                    <div class="rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300"> <!-- Clases dark: eliminadas -->
+                        <img src="https://images.unsplash.com/photo-1591337676887-a217a6970a8a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="Funda Abstracta Moderna" class="w-full h-64 object-cover"> <!-- Nueva imagen producto 1 -->
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Diseño Abstracto</h3> <!-- Clases dark: eliminadas -->
+                            <p class="mb-4">Colores vibrantes y formas únicas para un look moderno.</p> <!-- Clases dark: eliminadas -->
+                            <a href="#personalizar" class="hover:underline font-medium">Ver más o personalizar</a> <!-- Clases dark: eliminadas -->
+                        </div>
+                    </div>
+                    <!-- Producto 2 -->
+                    <div class="rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300"> <!-- Clases dark: eliminadas -->
+                        <img src="https://i.pinimg.com/originals/d6/95/b2/d695b2894e088f4cbdf2e3604d04eaec.jpg" alt="Funda Inspiración Bosque" class="w-full h-64 object-cover"> <!-- Nueva imagen producto 2 -->
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Inspiración Natural</h3> <!-- Clases dark: eliminadas -->
+                            <p class="mb-4">Lleva la belleza de la naturaleza contigo a todas partes.</p> <!-- Clases dark: eliminadas -->
+                            <a href="#personalizar" class="hover:underline font-medium">Ver más o personalizar</a> <!-- Clases dark: eliminadas -->
+                        </div>
+                    </div>
+                    <!-- Producto 3 -->
+                    <div class="rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300"> <!-- Clases dark: eliminadas -->
+                        <img src="https://th.bing.com/th/id/OIP.Zgdq03661uTC4zkkNYoIxgHaJJ?rs=1&pid=ImgDetMain" alt="Funda Minimalista Blanca" class="w-full h-64 object-cover"> <!-- Nueva imagen producto 3 -->
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Estilo Minimalista</h3> <!-- Clases dark: eliminadas -->
+                            <p class="mb-4">Simple, elegante y siempre a la moda. Menos es más.</p> <!-- Clases dark: eliminadas -->
+                            <a href="#personalizar" class="hover:underline font-medium">Ver más o personalizar</a> <!-- Clases dark: eliminadas -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="personalizar" class="py-16"> <!-- Clases dark: eliminadas -->
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Crea Tu Propio Estilo</h2> <!-- Clases dark: eliminadas -->
+                    <p class="text-lg max-w-3xl mx-auto"> <!-- Clases dark: eliminadas -->
+                        Da rienda suelta a tu creatividad. Sube tu foto, añade texto, elige colores y crea una funda que sea 100% tú. ¡Es fácil y divertido!
+                    </p>
+                </div>
+                <div class="flex flex-wrap items-center justify-center">
+                    <!-- Placeholder para la herramienta de personalización -->
+                    <div class="w-full md:w-1/2 lg:w-5/12 px-4 mb-8 md:mb-0">
+                        <div class="rounded-lg shadow-xl p-8 border"> <!-- Clases dark: eliminadas -->
+                            <h3 class="text-2xl font-semibold mb-6 text-center">Pasos para Personalizar:</h3> <!-- Clases dark: eliminadas -->
+                            <ol class="list-decimal list-inside space-y-4"> <!-- Clases dark: eliminadas -->
+                                <li>
+                                    <span class="font-medium">Elige tu modelo de móvil:</span> <!-- Clases dark: eliminadas -->
+                                    <select id="phoneModelSelect" class="mt-1 block w-full py-2 px-3 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"> <!-- Clases dark: eliminadas -->
+                                        <option value="">Selecciona tu modelo...</option>
+                                        <optgroup label="Apple">
+                                            <option value="iphone-15-pro-max">iPhone 15 Pro Max</option>
+                                            <option value="iphone-15-pro">iPhone 15 Pro</option>
+                                            <option value="iphone-15-plus">iPhone 15 Plus</option>
+                                            <option value="iphone-15">iPhone 15</option>
+                                            <option value="iphone-14-pro-max">iPhone 14 Pro Max</option>
+                                            <option value="iphone-14-pro">iPhone 14 Pro</option>
+                                            <option value="iphone-14-plus">iPhone 14 Plus</option>
+                                            <option value="iphone-14">iPhone 14</option>
+                                            <option value="iphone-se-2022">iPhone SE (2022)</option>
+                                        </optgroup>
+                                        <optgroup label="Samsung">
+                                            <option value="galaxy-s24-ultra">Samsung Galaxy S24 Ultra</option>
+                                            <option value="galaxy-s24-plus">Samsung Galaxy S24+</option>
+                                            <option value="galaxy-s24">Samsung Galaxy S24</option>
+                                            <option value="galaxy-s23-ultra">Samsung Galaxy S23 Ultra</option>
+                                            <option value="galaxy-s23-plus">Samsung Galaxy S23+</option>
+                                            <option value="galaxy-s23">Samsung Galaxy S23</option>
+                                            <option value="galaxy-z-fold5">Samsung Galaxy Z Fold 5</option>
+                                            <option value="galaxy-z-flip5">Samsung Galaxy Z Flip 5</option>
+                                        </optgroup>
+                                        <optgroup label="Google">
+                                            <option value="pixel-8-pro">Google Pixel 8 Pro</option>
+                                            <option value="pixel-8">Google Pixel 8</option>
+                                            <option value="pixel-7a">Google Pixel 7a</option>
+                                            <option value="pixel-7-pro">Google Pixel 7 Pro</option>
+                                            <option value="pixel-7">Google Pixel 7</option>
+                                        </optgroup>
+                                        <optgroup label="Otros">
+                                             <option value="xiaomi-14">Xiaomi 14</option>
+                                             <option value="oneplus-12">OnePlus 12</option>
+                                             <option value="otro">Otro (especificar)</option>
+                                        </optgroup>
+                                    </select>
+                                </li>
+                                <li>
+                                    <span class="font-medium">Sube tu imagen o diseño:</span>
+                                    <label for="imageLoader" class="cursor-pointer mt-1 w-full inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-150 ease-in-out text-center">
+                                        Cargar Archivo
+                                    </label>
+                                    <input type="file" id="imageLoader" name="imageLoader" accept="image/png, image/jpeg, image/svg+xml" class="hidden"/> <!-- Input real oculto -->
+                                    <p class="text-xs mt-1">Archivos JPG, PNG, SVG. Máx 10MB.</p>
+                                </li>
+                                <li>
+                                    <span class="font-medium">Añade texto (opcional):</span>
+                                    <input type="text" id="textInput" placeholder="Escribe tu texto aquí..." class="mt-1 block w-full py-2 px-3 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                </li>
+                                <li>
+                                    <span class="font-medium">Ajusta tu diseño:</span>
+                                    <p class="text-sm">Usa la vista previa para ver cómo queda tu diseño.</p>
+                                </li>
+                                <li>
+                                    <span class="font-medium">¡Previsualiza y ordena!</span> <!-- Clases dark: eliminadas -->
+                                    <p class="text-sm">Asegúrate de que todo esté perfecto antes de finalizar.</p> <!-- Clases dark: eliminadas -->
+                                </li>
+                            </ol>
+                            <button class="mt-8 w-full bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white font-bold py-3 px-4 rounded-full shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400 transition duration-150 ease-in-out transform hover:scale-105"> <!-- Clases dark: eliminadas -->
+                                Empezar a Personalizar
+                            </button>
+                        </div>
+                    </div>
+                     <!-- Imagen de ejemplo -->
+                     <div class="w-full md:w-1/2 lg:w-5/12 px-4 flex justify-center items-center">
+                        <canvas id="previewCanvas" width="300" height="500" class="border border-gray-400 rounded-lg shadow-xl bg-gray-200">Tu navegador no soporta Canvas.</canvas> <!-- Canvas para vista previa -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="contacto" class="py-16"> <!-- Clases dark: eliminadas -->
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">¿Tienes Preguntas? Contáctanos</h2> <!-- Clases dark: eliminadas -->
+                    <p class="text-lg max-w-2xl mx-auto"> <!-- Clases dark: eliminadas -->
+                        Estamos aquí para ayudarte. Rellena el formulario o envíanos un email a <a href="mailto:info@fundaspro.com" class="hover:underline">info@fundaspro.com</a>. <!-- Clases dark: eliminadas -->
+                    </p>
+                </div>
+                <div class="max-w-2xl mx-auto rounded-lg shadow-lg p-8 border"> <!-- Clases dark: eliminadas -->
+                    <form action="#" method="POST">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="nombre" class="block text-sm font-medium mb-1">Nombre</label> <!-- Clases dark: eliminadas -->
+                                <input type="text" name="nombre" id="nombre" required class="block w-full px-3 py-2 border rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm"> <!-- Clases dark: eliminadas -->
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium mb-1">Email</label> <!-- Clases dark: eliminadas -->
+                                <input type="email" name="email" id="email" required class="block w-full px-3 py-2 border rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm"> <!-- Clases dark: eliminadas -->
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <label for="asunto" class="block text-sm font-medium mb-1">Asunto</label> <!-- Clases dark: eliminadas -->
+                            <input type="text" name="asunto" id="asunto" required class="block w-full px-3 py-2 border rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm"> <!-- Clases dark: eliminadas -->
+                        </div>
+                        <div class="mb-6">
+                            <label for="mensaje" class="block text-sm font-medium mb-1">Mensaje</label> <!-- Clases dark: eliminadas -->
+                            <textarea name="mensaje" id="mensaje" rows="4" required class="block w-full px-3 py-2 border rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm"></textarea> <!-- Clases dark: eliminadas -->
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="inline-flex justify-center py-2 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition duration-150 ease-in-out"> <!-- Clases dark: eliminadas -->
+                                Enviar Mensaje
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+     
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 mt-16"> <!-- Clases dark: eliminadas -->
+        <div class="container mx-auto px-6 text-center"> <!-- Clases dark: eliminadas -->
+            <p>&copy; 2025 FundasPro. Todos los derechos reservados.</p>
+            <div class="mt-4 flex justify-center space-x-6">
+                <a href="#">Facebook</a> <!-- Clases dark: eliminadas -->
+                <a href="#">Instagram</a> <!-- Clases dark: eliminadas -->
+                <a href="#">Twitter</a> <!-- Clases dark: eliminadas -->
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <!-- Modal de Pago -->
+    <div id="paymentModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-lg shadow-xl max-w-md w-full p-6 relative mx-4">
+            <button id="closePaymentModal" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 focus:outline-none" aria-label="Cerrar modal" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){this.click();}">
+                ✕
+            </button>
+            <h2 class="text-2xl font-bold mb-4 text-center text-black">Finaliza tu compra</h2>
+            <p class="text-lg mb-6 text-center text-black">Precio: <span class="font-semibold">$15.000 ARS</span></p>
+            <div class="flex flex-col space-y-4">
+                <a href="https://www.mercadopago.com.ar/checkout/v1/redirect?preference-id=TEST1234"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400 transition duration-150 ease-in-out transform hover:scale-105 text-center"
+                   tabindex="0"
+                   aria-label="Pagar con Mercado Pago"
+                   onkeydown="if(event.key==='Enter'||event.key===' '){window.open('https://www.mercadopago.com.ar/checkout/v1/redirect?preference-id=TEST1234','_blank');}">
+                    Pagar con Mercado Pago
+                </a>
+                <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-400 transition duration-150 ease-in-out transform hover:scale-105" aria-label="Pagar con tarjeta" tabindex="0">
+                    Pagar con Tarjeta
+                </button>
+                <button class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-400 transition duration-150 ease-in-out transform hover:scale-105" aria-label="Pagar en efectivo" tabindex="0">
+                    Pagar en Efectivo
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- Modal para imagen de funda -->
+    <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-75 hidden items-center justify-center z-50">
+        <div class="relative max-w-3xl w-full mx-4">
+            <button id="closeImageModal" class="absolute top-2 right-2 text-white hover:text-gray-300 focus:outline-none" aria-label="Cerrar imagen" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){this.click();}">
+                ✕
+            </button>
+            <img id="modalImage" src="" alt="Vista ampliada de la funda" class="w-full h-auto rounded-lg shadow-lg">
+        </div>
+    </div>
+
+    <!-- Chatbox IA -->
+    <div id="chatboxContainer" class="fixed bottom-4 right-4 z-50">
+        <button id="toggleChatbox" class="bg-blue-500 hover:bg-blue-600 text-white rounded-full p-4 shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400 transition transform hover:scale-105" aria-label="Abrir chat de atención al cliente" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){this.click();}">
+            💬
+        </button>
+        <div id="chatbox" class="hidden flex flex-col bg-white border border-gray-300 rounded-lg shadow-xl w-80 max-w-full h-96 mt-2">
+            <div class="flex justify-between items-center p-3 border-b">
+                <h3 class="font-semibold">Asistente Virtual</h3>
+                <button id="closeChatbox" class="text-gray-500 hover:text-gray-700 focus:outline-none" aria-label="Cerrar chat" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){this.click();}">✕</button>
+            </div>
+            <div id="chatMessages" class="flex-1 overflow-y-auto px-4 py-3 space-y-2 text-sm"></div>
+            <div class="p-3 border-t flex space-x-2">
+                <input id="chatInput" type="text" placeholder="Escribe tu mensaje..." class="flex-1 border rounded-full px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 text-black" />
+                <button id="sendChat" class="bg-blue-500 hover:bg-blue-600 text-white rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition">Enviar</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
